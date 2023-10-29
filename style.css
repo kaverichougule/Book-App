@@ -338,6 +338,7 @@ ul .bookList{
   .Popup_Book_Img img{
     width: 192px;
     height: 281px;
+    border-radius: 10px;
   }
   .preview-img button{
     color: #111;
