@@ -154,11 +154,18 @@ async function getCategoryBooks(singleCategory){
     console.log(jsonFormat);
     let li=document.createElement("li")
     li.classList.add("bookList")
-    let h3=document.createElement("h3")
-    h3.className="book_title"
-    h3.innerText=jsonFormat[0].list_name
-    li.appendChild(h3)
+    // let h1=document.createElement("h1")
+    // h1.className="book_title"
+    // h1.innerText=jsonFormat[0].list_name
+    // li.appendChild(h1)
+    li.innerHTML=`
+        <h2 class="booksMainTitle">
+            ${jsonFormat[0].list_name}
+            <span class="title_Seller">
 
+            </span>
+        </h2>
+    `
     let div1=document.createElement("div")
     div1.className="Single_Section_Book_Items"
     li.appendChild(div1)
@@ -167,6 +174,8 @@ async function getCategoryBooks(singleCategory){
         // console.log(jsonFormat[i]);
         createSingleBookCard(jsonFormat[i],div1,li)
     }
+    let booksMainTitle=document.querySelector(".booksMainTitle")
+    booksMainTitle.style.display="none"
 }
 
 function createSingleBookCard(singleCatBook,div1,li){
