@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="MainContainer">
+        <header class="navbar">
+            <img src="./images/logo.jpg" alt="" class="logo">
+            
+            <div class="signupBtn">
+                <div id="toggle">
+                    <i class="indicator"></i>
+                </div>
+                <button class="signUp">
+                    <span>SignUp</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </header>
+        <!-- SignUp Section Start-->
+        <div class="SignUpSection">
+            <div class="signUp_Card">
+                <i class="fa-solid fa-xmark fa-2xl closeBtn"></i>
+                <!-- SignUp form -->
+                <div class="SignUp_form_div">
+                    <form action="" class="signupForm" name="SIGNUP" onsubmit="return validateForm()">
+                        <input type="text" class="signUp_class" placeholder="NAME" name="name">
+                        <input type="email" class="signUp_class" placeholder="EMAIL" name="email"> 
+                        <input type="password" class="signUp_class" placeholder="PASSWORD" name="password"> 
+                        <button class="register_Btn">SIGN UP</button>
+                    </form>
+                </div>
+
+                <!-- SignIn from -->
+                <div class="signIn_Form_div">
+                    <form action="" class="signInForm">
+                        <input type="email" class="signIn_class" placeholder="EMAIL"> 
+                        <input type="password" class="signIn_class" placeholder="PASSWORD">
+                        <button class="signIn_Btn">SIGN IN</button>
+                    </form>
+                </div>
+                <div class="link_signUp_signIn">
+                    <a href="#" class="signUp_link active" id="signUp_link_id">
+                        SIGN UP
+                    </a>
+                    <a href="#" class="signIn_link" id="signIn_link_id">
+                        SIGN IN
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- SignUp Section Ends -->
+        <main class="MainSection">
+                <aside class="SideBookCategoryList">
+                    <div class="aside_categories">
+                        <ul class="Categories">
+                            <h3>ALL CATEGORIES</h3>
+
+                        </ul>
+                    </div>
+                    <div class="Support_Ukraine_Container">
+                        <div class="heading_Support_Ukraine">
+                            <h4>Support Ukraine</h4>
+                            <div class="support_subContent">
+                                <div class="single_support">
+                                        <p class="numbering">01</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/01-found-1.a728105c.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">02</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/02-found-1.feda50b1.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">03</p>
+                                    <a href="" class="ukrainImg">
+                                    <img src="https://yevhenii2022.github.io/team-proj-js-book-app/03-found-1.89276286.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">04</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/04-found-1.cbff70d4.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">05</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/05-found-1.0fdab6a1.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">06</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/06-found-1.c5359439.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">07</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/07-found-1.174022ef.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">08</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/08-found-1.7aca5d21.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="single_support">
+                                    <p class="numbering">09</p>
+                                    <a href="" class="ukrainImg">
+                                        <img src="https://yevhenii2022.github.io/team-proj-js-book-app/09-found-1.8d6aef68.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="down_angle">
+                                <i class="fa-solid fa-angle-down fa-2xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <div class="BooksCards">
+                    <div class="cards">
+                        <h1 class="booksMainTitle">
+                            Best Sellers 
+                            <span class="title_Seller">
+                                Books
+                            </span>
+                        </h1>
+                        <ul id="book_items">
+                            <!-- <li class="bookList">
+                                <h3 class="book_title">${element.list_name}</h3>
+                                <div class="Single_Section_Book_Items">
+                                    <a href="#" class="single_Book">
+                                        <div class="book_img">
+                                            <img src="${element.book.book_image}" alt="">
+                                            <div class="hoverText animate__animated">
+                                                QuickView
+                                            </div>
+                                        </div>
+                                        <div class="book_desc">
+                                            <h3>${element.book.title}</h3>
+                                            <p>${element.book.author}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li> -->
+                        </ul>
+                        
+                    </div>
+                </div>
+        </main>
+
+        <!-- single product popup -->
+        <!-- <div class="lightbox">
+            <div class="wrapper">
+                <i class="fa-solid fa-xmark fa-xl popup_Close"></i>
+                <div class="popup_head">
+                    <div class="Popup_Book_Img">
+                        <img src="./images/logo.jpg">
+                    </div>
+                    <div class="Popop_Bookinfo">
+                        <h3 class="popup_BookName">
+                            Kaveri
+                        </h3>
+                        <p class="popup_authorName">
+                            xyz
+                        </p>
+                    </div>
+                </div>
+                <div class="preview-img">
+                    <button>ADD TO SHOPPING LIST</button>
+                </div>
+            </div>
+        </div> -->
+        <!-- single book popup end -->
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
