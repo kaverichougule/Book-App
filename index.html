@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+    <!-- <div class="preloader"> -->
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+        </div>
+    <!-- </div> -->
     <div class="MainContainer">
         <header class="navbar">
             <a href="">
@@ -30,7 +40,7 @@
                 <i class="fa-solid fa-xmark fa-2xl closeBtn"></i>
                 <!-- SignUp form -->
                 <div class="SignUp_form_div">
-                    <form action="" class="signupForm" name="SIGNUP" onsubmit="return validateForm()">
+                    <form action="" class="signupForm" name="SIGNUP">
                         <input type="text" class="signUp_class" placeholder="NAME" name="name">
                         <input type="email" class="signUp_class" placeholder="EMAIL" name="email"> 
                         <input type="password" class="signUp_class" placeholder="PASSWORD" name="password"> 
@@ -56,8 +66,11 @@
                 </div>
             </div>
         </div>
+
         <!-- SignUp Section Ends -->
         <main class="MainSection">
+            
+
                 <aside class="SideBookCategoryList">
                     <div class="aside_categories">
                         <ul class="Categories">
@@ -130,7 +143,9 @@
                         </div>
                     </div>
                 </aside>
+
                 <div class="BooksCards">
+
                     <div class="cards">
                         <h1 class="booksMainTitle">
                             Best Sellers 
@@ -186,6 +201,9 @@
         </div> -->
         <!-- single book popup end -->
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    
     <script src="./script.js"></script>
 </body>
 </html>

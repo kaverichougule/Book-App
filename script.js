@@ -1,7 +1,10 @@
 let book_items=document.querySelector("#book_items")
 let MainSection=document.querySelector(".MainSection")
 let single_Book=document.querySelector(".single_Book")
+let loader=document.querySelector(".loader")
+
 async function fetchBooks(){
+    loader.style.display="block"
     let data=await fetch(`https://books-backend.p.goit.global/books/top-books`)
     let JSONData=await data.json()
     
@@ -29,9 +32,10 @@ async function fetchBooks(){
         book_items.appendChild(btn);
 
     });
-    
+    loader.style.display="none"
 }
 fetchBooks()
+
 function singleCategoryDetails(books,li){
     let Single_Section_Book=document.createElement("div")
     Single_Section_Book.classList.add("Single_Section_Book_Items");
@@ -222,33 +226,37 @@ closeBtn.addEventListener("click",()=>{
 })
 //SignUp End
 
+let signUpForm=document.querySelector(".signupForm")
+let Registerbtn=document.querySelector(".register_Btn")
+Registerbtn.addEventListener("click",(event)=>{
+    event.preventDefault()
+    validateForm()
+})
 // Form Validation
 function validateForm(){
     let name=document.forms["SIGNUP"]["name"]
     let email=document.forms["SIGNUP"]["email"]
     let password=document.forms["SIGNUP"]["password"]
+    // console.log(name.value);
+    // console.log(email);
+    // console.log(password);
 
     if(name.value==""){
         window.alert("Please enter your name")
-        name.focus()
         return false;
     }
     
     if(password.value==""){
         window.alert("Please enter your password")
-        password.focus()
         return false;
     }
     if(email.value==""){
-        if(register()){
-            window.alert("Successfully Registered")
-            return true
-        }
-        else{
-            window.alert("Please enter your email")
-            email.focus()
-            return false;
-        }
+        window.alert("Please enter your email")
+        return false; 
+    }
+    else if(register()){
+        window.alert("Successfully Registered")
+        return true
     }
 }
 
@@ -258,12 +266,17 @@ function register(){
     let email=document.forms["SIGNUP"]["email"].value
     let password=document.forms["SIGNUP"]["password"].value
 
+
+    console.log(name);
+    console.log(email);
+    console.log(password);
     var NewUser={
         id:Number(new Date),
         "Name":name,
         "Email":email,
         "Password":password
     }
+    
     let UserExists=arr.some(users=> users.email===NewUser.Email)
     if(UserExists){
         return new Error({error: 'User Exists'})
