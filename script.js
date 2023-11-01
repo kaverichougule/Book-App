@@ -296,3 +296,11 @@ function register(){
 // }
 
 
+// Dark and Light Mode
+let header=document.querySelector("header")
+let logoName=document.querySelector(".logoName")
+toggle.addEventListener("click",()=>{
+    toggle.classList.toggle('active')
+    header.classList.toggle('active')
+    logoName.classList.toggle('active')
+})
