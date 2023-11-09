@@ -363,11 +363,12 @@ function signIn(){
         "Password":password
     }
     let users=[];
-    users=JSON.parse(localStorage.getItem("users"))
+    users=JSON.parse(localStorage.getItem("users")) || []
     console.log(users);
     
     for(let i in users){
         if(UserLogin.Email==users[i].Email && UserLogin.Password==users[i].Password){
+            
             let signupbtnNavBar=document.querySelector(".signupbtnNavBar")
             signupbtnNavBar.innerHTML=`
                 <button class="userNameNav">
@@ -379,15 +380,68 @@ function signIn(){
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
             `
+            localStorage.setItem('user',JSON.stringify({'Name':users[i].Name,'Email':users[i].Email}))
+
             MainSection.style.display="flex"
             SignUpSection.style.display="none"
-            console.log(book_items);
+            // console.log(book_items);
             return 'success'
         }
     }
-    
-    
 }
+document.body.addEventListener("click", (event) => {
+    if (event.target.classList.contains("LogOut")) {
+        localStorage.removeItem("user");
+        let signupbtnNavBar = document.querySelector(".signupbtnNavBar");
+        // console.log(signupbtnNavBar);
+        signupbtnNavBar.innerHTML=`
+            <button class="signUp">
+                <span>SignUp</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        `
+        let signUpBtn=document.querySelector(".signUp")
+// let SignUpSection=document.querySelector(".SignUpSection")
+        signUpBtn.addEventListener("click",(event)=>{
+            MainSection.style.display="none"
+            SignUpSection.style.display="block"
+        })
+
+        // location.reload();
+        
+    }
+});
+
+function displayUserData() {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let signupbtnNavBar = document.querySelector(".signupbtnNavBar");
+
+    if (users.length > 0) {
+        let loggedInUser = users[0]; 
+        signupbtnNavBar.innerHTML = `
+            <button class="userNameNav">
+                <span>${loggedInUser.Name}</span>
+                <i class="fa-solid fa-caret-down" onclick="logOut_dropdown()"></i>
+            </button>
+            <button class="signUp LogOut">
+                <span>Log Out</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayUserData();
+});
+
+// let logOut=document.querySelector(".LogOut")
+// console.log(logOut);
+// logOut.onclick=()=>{
+//     localStorage.removeItem("user")
+//     location.reload()
+// }
+
 function logOut_dropdown(){
     let userNameNav=document.querySelector(".userNameNav");
     userNameNav.style.marginTop="3.6rem"
@@ -444,7 +498,7 @@ let MainContainer=document.querySelector(".MainContainer")
 // let categories=document.querySelector(".Categories")
 let cards=document.querySelector(".cards")
 let showMoreBtn=document.getElementsByClassName("showMoreBtn")
-console.log(showMoreBtn);
+// console.log(showMoreBtn);
 let category_item=document.getElementsByClassName("category_item")
 // console.log(category_item);
 // console.log(categories.childNodes);
