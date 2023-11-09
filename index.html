@@ -29,10 +29,16 @@
                 <div id="toggle">
                     <i class="indicator"></i>
                 </div>
-                <button class="signUp">
-                    <span>SignUp</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
+                    <div class="signupbtnNavBar">
+                        <button class="signUp">
+                            <span>SignUp</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <!-- <button class="signUp LogOut">
+                            <span>Log Out</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button> -->
+                    </div>
             </div>
         </header>
         <!-- SignUp Section Start-->
@@ -41,7 +47,7 @@
                 <i class="fa-solid fa-xmark fa-2xl closeBtn"></i>
                 <!-- SignUp form -->
                 <div class="SignUp_form_div">
-                    <form action="" class="signupForm" name="SIGNUP">
+                    <form action="" class="signupForm" name="SIGNUP" name="forms">
                         <input type="text" class="signUp_class" placeholder="NAME" name="name">
                         <input type="email" class="signUp_class" placeholder="EMAIL" name="email"> 
                         <input type="password" class="signUp_class" placeholder="PASSWORD" name="password"> 
@@ -51,17 +57,17 @@
 
                 <!-- SignIn from -->
                 <div class="signIn_Form_div">
-                    <form action="" class="signInForm">
-                        <input type="email" class="signIn_class" placeholder="EMAIL"> 
-                        <input type="password" class="signIn_class" placeholder="PASSWORD">
+                    <form action="" class="signInForm" name="signInForms">
+                        <input type="email" class="signIn_class" placeholder="EMAIL" name="email"> 
+                        <input type="password" class="signIn_class" placeholder="PASSWORD" name="password">
                         <button class="signIn_Btn">SIGN IN</button>
                     </form>
                 </div>
                 <div class="link_signUp_signIn">
-                    <a href="#" class="signUp_link active" id="signUp_link_id">
+                    <a href="#" class="signUp_link" id="signUp_link_id">
                         SIGN UP
                     </a>
-                    <a href="#" class="signIn_link" id="signIn_link_id">
+                    <a href="#" class="signIn_link active" id="signIn_link_id">
                         SIGN IN
                     </a>
                 </div>

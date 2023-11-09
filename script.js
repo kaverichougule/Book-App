@@ -135,7 +135,7 @@ async function categoriesList(){
     let categories=document.querySelector(".Categories")
     
     data.forEach(element=>{
-        let categoryItem=document.createElement("li")
+        var categoryItem=document.createElement("li")
         categoryItem.innerText=element.list_name
         categoryItem.className="category_item"
         categories.appendChild(categoryItem)
@@ -250,45 +250,182 @@ function validateForm(){
         window.alert("Please enter your password")
         return false;
     }
+
     if(email.value==""){
         window.alert("Please enter your email")
         return false; 
     }
-    else if(register()){
-        window.alert("Successfully Registered")
-        return true
+    else {
+        const registrationStatus = register();
+        if (registrationStatus === 'registered') {
+            window.alert("This email is already registered");
+            return false;
+        } else if (registrationStatus === 'success') {
+            window.alert("Successfully Registered");
+            return true;
+        }
     }
 }
 
-let arr=JSON.parse(localStorage.getItem("users"))
+let arr=JSON.parse(localStorage.getItem("users")) || []
+console.log(arr);
 function register(){
     let name=document.forms["SIGNUP"]["name"].value
     let email=document.forms["SIGNUP"]["email"].value
     let password=document.forms["SIGNUP"]["password"].value
 
 
-    console.log(name);
-    console.log(email);
-    console.log(password);
+    // console.log(name);
+    // console.log(email);
+    // console.log(password);
     var NewUser={
         id:Number(new Date),
         "Name":name,
         "Email":email,
         "Password":password
     }
+    // console.log(NewUser);
+    // console.log(arr);
+    // var json=JSON.stringify(NewUser)
+    // localStorage.setItem(email,json)
+    // console.log("user added");
     
-    let UserExists=arr.some(users=> users.email===NewUser.Email)
+    let UserExists=arr.find(users=> users.Email===NewUser.Email)
+    console.log(UserExists);
     if(UserExists){
-        return new Error({error: 'User Exists'})
+        // return new Error({error: "User Exists"})
+        return "registered"
     }
     else{
         arr.push(NewUser)
+        let userString=JSON.stringify(arr)
+        localStorage.setItem('users',userString)
+        return "success" 
     }
-    let userString=JSON.stringify(arr)
-    localStorage.setItem('users',userString) 
+    
+}
+// Registration End
+
+
+// SignIn starts
+let signInForm=document.querySelector(".signInForm")
+let signIn_Btn=document.querySelector(".signIn_Btn")
+signIn_Btn.addEventListener("click",(event)=>{
+    event.preventDefault();
+    Validate_signIn()
+})
+function Validate_signIn(){
+    let email=document.forms["signInForms"]["email"]
+    let password=document.forms["signInForms"]["password"]
+
+    if(password.value=="" || email.value==""){
+        window.alert("Please enter your details")
+        return false;
+    }
+    else{
+        const registrationStatus = signIn();
+        if (registrationStatus === 'notRegistered') {
+            window.alert("Wrong Details entered");
+            return false;
+        } else if (registrationStatus === 'success') {
+            window.alert("Successfully Registered");
+            return true;
+        }
+        // const SignInStatus=signIn()
+        
+    }
 }
 
-// Registration End
+function signIn(){
+    // let NewUser={
+    //     Email : document.forms['signInForms']['email'].value,
+    //     Password : document.forms['signInForms']['password'].value
+    //     }
+    //     var users=[];
+    // var data=localStorage.getItem('users');
+    // if(data){
+    //     users= JSON.parse(data);
+    // }
+    // for(var i in users){
+    //     if(NewUser.Email===users[i].Email && NewUser.Password===users[i].Password){
+    //         localStorage.setItem('user',JSON.stringify({'Name':users[i].Name,'Email':users[i].Email}))
+    //         return "success";
+    //     }
+    // }
+    // users.push(NewUser)
+    // localStorage.setItem('users',JSON.stringify(users))
+    // return "notRegistered"
+
+    let email=document.forms["signInForms"]["email"].value;
+    let password=document.forms["signInForms"]["password"].value;
+    let UserLogin={
+        "Email":email,
+        "Password":password
+    }
+    let users=[];
+    users=JSON.parse(localStorage.getItem("users"))
+    console.log(users);
+    
+    for(let i in users){
+        if(UserLogin.Email==users[i].Email && UserLogin.Password==users[i].Password){
+            let signupbtnNavBar=document.querySelector(".signupbtnNavBar")
+            signupbtnNavBar.innerHTML=`
+                <button class="userNameNav">
+                    <span>${users[i].Name}</span>
+                    <i class="fa-solid fa-caret-down" onclick="logOut_dropdown()"></i>
+                </button>
+                <button class="signUp LogOut">
+                    <span>Log Out</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `
+            MainSection.style.display="flex"
+            SignUpSection.style.display="none"
+            console.log(book_items);
+            return 'success'
+        }
+    }
+    
+    
+}
+function logOut_dropdown(){
+    let userNameNav=document.querySelector(".userNameNav");
+    userNameNav.style.marginTop="3.6rem"
+    let logOut=document.querySelector(".LogOut")
+    console.log(logOut);    
+    logOut.style.display="flex"
+    logOut.style.marginTop = "5px";
+}
+
+// SignIn Ends
+
+
+
+let signUp_link=document.querySelector(".signUp_link")
+let signIn_link=document.querySelector(".signIn_link")
+let SignUp_form_div=document.querySelector(".SignUp_form_div")
+let signIn_Form_div=document.querySelector(".signIn_Form_div")
+signUp_link.addEventListener("click",()=>{
+    signIn_link.classList.add('active')
+    signUp_link.classList.remove('active')
+    SignUp_form_div.style.display="flex"
+    signIn_Form_div.style.display="none"
+})
+signIn_link.addEventListener("click",()=>{
+    signUp_link.classList.add('active')
+    signIn_link.classList.remove('active')
+    signIn_Form_div.style.display="flex"
+    SignUp_form_div.style.display="none"
+})
+
+
+
+
+
+
+
+
+
 
 
 // async function Categories_section(){
@@ -296,11 +433,37 @@ function register(){
 // }
 
 
+
+
+
+
 // Dark and Light Mode
 let header=document.querySelector("header")
 let logoName=document.querySelector(".logoName")
+let MainContainer=document.querySelector(".MainContainer")
+// let categories=document.querySelector(".Categories")
+let cards=document.querySelector(".cards")
+let showMoreBtn=document.getElementsByClassName("showMoreBtn")
+console.log(showMoreBtn);
+let category_item=document.getElementsByClassName("category_item")
+// console.log(category_item);
+// console.log(categories.childNodes);
 toggle.addEventListener("click",()=>{
     toggle.classList.toggle('active')
     header.classList.toggle('active')
     logoName.classList.toggle('active')
+    MainContainer.classList.toggle('active')
+    // category_item.classList.toggle('active')
+    cards.classList.toggle('active')
+    Array.from(category_item).forEach(item => {
+        item.classList.toggle('active');
+    });
+    Array.from(showMoreBtn).forEach(item => {
+        item.classList.toggle('active');
+    });
+
 })
+
+
+// Show More 
+

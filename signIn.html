@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- <div class="preloader"> -->
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+        </div>
+    <!-- </div> -->
+    <div class="MainContainer">
+        <header class="navbar">
+            <a href="" class="logoName">
+                <img src="./images/logo.png" alt="" class="logo">
+                <h3>Book</h3>
+            </a>
+            
+            <div class="signupBtn">
+                <div id="toggle">
+                    <i class="indicator"></i>
+                </div>
+                <button class="signUp">
+                    <span>SignUp</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </header>
+        <!-- SignUp Section Start-->
+        <div class="SignUpSection">
+            <div class="signUp_Card">
+                <i class="fa-solid fa-xmark fa-2xl closeBtn"></i>
+                <!-- SignUp form -->
+                <div class="SignUp_form_div">
+                    <form action="" class="signupForm" name="SIGNUP" name="forms">
+                        <input type="text" class="signUp_class" placeholder="NAME" name="name">
+                        <input type="email" class="signUp_class" placeholder="EMAIL" name="email"> 
+                        <input type="password" class="signUp_class" placeholder="PASSWORD" name="password"> 
+                        <button class="register_Btn">SIGN UP</button>
+                    </form>
+                </div>
+
+                <!-- SignIn from -->
+                <div class="signIn_Form_div">
+                    <form action="" class="signInForm">
+                        <input type="email" class="signIn_class" placeholder="EMAIL"> 
+                        <input type="password" class="signIn_class" placeholder="PASSWORD">
+                        <button class="signIn_Btn">SIGN IN</button>
+                    </form>
+                </div>
+                <div class="link_signUp_signIn">
+                    <a href="#" class="signUp_link active" id="signUp_link_id">
+                        SIGN UP
+                    </a>
+                    <a href="#" class="signIn_link" id="signIn_link_id">
+                        SIGN IN
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    
+    <script src="./script.js"></script>
+</body>
+</html>

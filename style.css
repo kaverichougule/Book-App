@@ -21,6 +21,9 @@
     display: flex;
     flex-direction: column;
 }
+.MainContainer.active{
+    background-color: #202024;
+}
 header{
     background-color: #fff;
     border: 1.5px solid #111;
@@ -135,6 +138,9 @@ header.active{
     color: #4f2ee8;
     font-weight: 700;
     transform: scale(1);
+}
+.Categories li.active{
+    color: white;
 }
 ::-webkit-scrollbar {
     width: 8px;
@@ -325,7 +331,9 @@ ul .bookList{
     background: #4f2ee8;
     color: white;
 }
-
+.showMoreBtn.active{
+    color: white;
+}
 /* Single Book Popup Start*/
 .lightbox{
     position: fixed;
@@ -445,13 +453,12 @@ ul .bookList{
     font-size: 18px;
     line-height: 1.33;
     font-weight: 700;
-    border-bottom: 2px solid gray;
-    color: gray;
-}
-.link_signUp_signIn a.active{
     color: #4f2ee8;
     border-bottom: 2px solid #4f2ee8;
-
+}
+.link_signUp_signIn a.active{
+    color: gray;
+    border-bottom: 2px solid gray;
 }
 .link_signUp_signIn{
     display: flex;
@@ -574,4 +581,31 @@ ul .bookList{
       transform: scaleY(1.0);
       -webkit-transform: scaleY(1.0);
     }
+  }
+
+  .cards.active{
+    color: white;
+  }
+  .category_item.active{
+    color: white;
+  }
+  
+  .LogOut{
+    margin-top: 5px;
+    display: none;
+  }
+  .userNameNav{
+    background-color: #4f2ee8;
+    color: white;
+    margin-right: 10px;
+    border: 1.5px solid #111;
+    border-radius: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 14px;
+    width: 190px;
+    height: 50px;
+    margin-right: 24px;
   }
